@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ogled izdelkov | Čebelarstvo Hrenovec</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: #faf8f3;
+            color: #3d2a14;
+        }
+        header {
+            background: linear-gradient(135deg, #f5c842 0%, #c9912b 100%);
+            padding: 20px;
+            text-align: center;
+
+        }
+        header h1 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+        .product {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .product:hover {
+            transform: translateY(-6px);
+        }
+        .product img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 20px;
+        }
+        .product-info h3 {
+            margin-top: 0;
+            font-family: 'Playfair Display', serif;
+        }
+        .price {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #f5c842 0%, #c9912b 100%);
+            color: #3d2a14;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f5c842;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Ogled izdelkov</h1>
+    <p>Naša trgovina domačih medenih izdelkov</p>
+</header>
+
+<main class="container">
+    <section class="product-grid">
+        <div class="product">
+            <img src="https://www.medex.si/media/catalog/product/cache/9e694e6d56b778f06f02db6408d22ff8/3/0/30010-01-nbhst-v1.jpg" alt="Cvetlični med">
+            <div class="product-info">
+                <h3>Cvetlični med</h3>
+                <p>100 % naravni slovenski med.</p>
+                <div class="price">8,50 €</div>
+                <a href="#" class="btn">Dodaj v košarico</a>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="https://www.medex.si/media/catalog/product/cache/9e694e6d56b778f06f02db6408d22ff8/3/0/30206-01-nbhst-v1.jpg" alt="Gozdni med">
+            <div class="product-info">
+                <h3>Gozdni med</h3>
+                <p>Močan okus in temna barva.</p>
+                <div class="price">9,50 €</div>
+                <a href="#" class="btn">Dodaj v košarico</a>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="https://cebelarna-novak.si/cdn/shop/products/image_d72555e4-41b6-49b9-a751-830e61017816_600x.png?v=1651858478" alt="Medene sveče">
+            <div class="product-info">
+                <h3>Medene sveče</h3>
+                <p>Naravne sveče iz čebeljega voska.</p>
+                <div class="price">6,00 €</div>
+                <a href="#" class="btn">Dodaj v košarico</a>
+            </div>
+        </div>
+    </section>
+</main>
+<a href="Čebelarstvo Hrenovec.html" class="btn">DOMOV</a>
+<footer>
+    <p>© 2025 Čebelarstvo Hrenovec</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Spletna trgovina | Čebelarstvo Hrenovec</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lato&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: #faf8f3;
+    color: #3d2a14;
+}
+
+header {
+    background: linear-gradient(135deg, #f5c842 0%, #c9912b 100%);
+    padding: 30px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.top-actions {
+    margin-top: 14px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cart-summary {
+    font-weight: 600;
+    background: rgba(255,255,255,0.45);
+    padding: 10px 16px;
+    border-radius: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 24px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+.product-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(61,42,20,0.12);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+}
+
+.product-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.product-info {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.product-info h3 {
+    margin-top: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 26px;
+    background: linear-gradient(135deg, #f5c842 0%, #c9912b 100%);
+    color: #3d2a14;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    margin-top: 80px;
+    padding: 20px;
+    text-align: center;
+    background: #f5c842;
+}
+
+.added {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #6b5a48;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Spletna trgovina</h1>
+<p>Domači medeni izdelki</p>
+
+<div class="top-actions">
+    <div class="cart-summary">
+        🛒 <span id="cart-count">0</span> |
+        <span id="cart-total">0.00 €</span>
+    </div>
+
+    <a class="btn" id="checkoutTop" href="košarica.html">
+        Košarica (0.00 €)
+    </a>
+
+    <a class="btn" id="finishTop" href="konec_nakupa.html">
+        Zaključi nakup (0.00 €)
+    </a>
+</div>
+</header>
+
+<main class="container">
+
+<section class="product-grid">
+
+<article class="product-card">
+<img src="noveslike/cvetličnimali.png" alt="Cvetlični med">
+<div class="product-info">
+<h3>Cvetlični med</h3>
+<p>450g</p>
+<div class="price">7,00 €</div>
+<button class="btn add-to-cart">Dodaj v košarico</button>
+<div class="added">Dodano ✅</div>
+</div>
+</article>
+
+<article class="product-card">
+<img src="noveslike/gozdni.png" alt="Gozdni med">
+<div class="product-info">
+<h3>Gozdni med</h3>
+<p>900g</p>
+<div class="price">14,00 €</div>
+<button class="btn add-to-cart">Dodaj v košarico</button>
+<div class="added">Dodano ✅</div>
+</div>
+</article>
+
+<article class="product-card">
+<img src="noveslike/sveča.png" alt="Sveče iz čebeljega voska">
+<div class="product-info">
+<h3>Sveče iz čebeljega voska</h3>
+<p>300g</p>
+<div class="price">10,00 €</div>
+<button class="btn add-to-cart">Dodaj v košarico</button>
+<div class="added">Dodano ✅</div>
+</div>
+</article>
+
+<article class="product-card">
+<img src="slike/IMG_2117.jpeg" alt="Čebelarska obleka">
+<div class="product-info">
+<h3>Čebelarska obleka</h3>
+<p>Številka L</p>
+<div class="price">25,00 €</div>
+<button class="btn add-to-cart">Dodaj v košarico</button>
+<div class="added">Dodano ✅</div>
+</div>
+</article>
+
+<article class="product-card">
+<img src="slike/IMG_2118.jpeg" alt="Kozarci za med">
+<div class="product-info">
+<h3>Kozarci za med</h3>
+<p>Set kozarcev</p>
+<div class="price">6,50 €</div>
+<button class="btn add-to-cart">Dodaj v košarico</button>
+<div class="added">Dodano ✅</div>
+</div>
+</article>
+
+<article class="product-card">
+<img src="slike/IMG_2120.jpeg" alt="Okvirji za panje">
+<div class="product-info">
+<h3>Okvirji za panje</h3>
+<p>Leseni okvirji</p>
+<div class="price">12,90 €</div>
+<button class="btn add-to-cart">Dodaj v košarico</button>
+<div class="added">Dodano ✅</div>
+</div>
+</article>
+
+<article class="product-card">
+<img src="slike/IMG_2115.jpeg" alt="Lesena stenska polica">
+<div class="product-info">
+<h3>Lesena stenska polica</h3>
+<p>Posebna ponudba</p>
+<div class="price">10,50 €</div>
+<button class="btn add-to-cart">Dodaj v košarico</button>
+<div class="added">Dodano ✅</div>
+</div>
+</article>
+
+<article class="product-card">
+<img src="slike/IMG_2114.jpg" alt="Cedilo za med">
+<div class="product-info">
+<h3>Cedilo za med</h3>
+<p>Kovinsko sito</p>
+<div class="price">4,90 €</div>
+<button class="btn add-to-cart">Dodaj v košarico</button>
+<div class="added">Dodano ✅</div>
+</div>
+</article>
+
+<article class="product-card">
+<img src="slike/IMG_2110.jpeg" alt="Kadilo za čebele">
+<div class="product-info">
+<h3>Kadilo za čebele</h3>
+<p>Čebelarski pripomoček</p>
+<div class="price">5,50 €</div>
+<button class="btn add-to-cart">Dodaj v košarico</button>
+<div class="added">Dodano ✅</div>
+</div>
+</article>
+
+</section>
+
+<div style="text-align:center; margin-top:60px;">
+<a href="Čebelarstvo Hrenovec.html" class="btn">Nazaj domov</a>
+</div>
+
+</main>
+
+<footer>
+<p>© 2025 Čebelarstvo Hrenovec</p>
+</footer>
+
+<script>
+function getCart() {
+    return JSON.parse(localStorage.getItem('cart')) || [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function updateTop() {
+    const cart = getCart();
+    const total = cart.reduce((s, i) => s + (Number(i.price) || 0), 0);
+    const count = cart.length;
+
+    document.getElementById('cart-count').textContent = count;
+    document.getElementById('cart-total').textContent = total.toFixed(2) + ' €';
+    document.getElementById('checkoutTop').textContent = 'Košarica (' + total.toFixed(2) + ' €)';
+    document.getElementById('finishTop').textContent = 'Zaključi nakup (' + total.toFixed(2) + ' €)';
+}
+
+document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const card = btn.closest('.product-card');
+
+        const name = card.querySelector('h3').innerText;
+        const priceText = card.querySelector('.price').innerText.replace(',', '.');
+        const price = parseFloat(priceText);
+        const img = card.querySelector('img').getAttribute('src');
+
+        const cart = getCart();
+
+        cart.push({
+            name: name,
+            price: price,
+            img: img
+        });
+
+        saveCart(cart);
+        updateTop();
+
+        const added = card.querySelector('.added');
+        added.style.display = 'block';
+
+        setTimeout(() => {
+            added.style.display = 'none';
+        }, 900);
+    });
+});
+
+updateTop();
+</script>
+
+</body>
+</html>

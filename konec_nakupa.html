@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zaključek nakupa | Čebelarstvo Hrenovec</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background: #faf8f3;
+    color: #3d2a14;
+}
+
+header {
+    background: linear-gradient(135deg, #f5c842, #c9912b);
+    padding: 30px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 24px;
+}
+
+.box {
+    background: #fff;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    margin-bottom: 22px;
+}
+
+h2 {
+    margin: 0 0 14px;
+    font-family: 'Playfair Display', serif;
+}
+
+.cart-line {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(61,42,20,0.12);
+}
+
+.cart-line:last-child {
+    border-bottom: none;
+}
+
+.cart-line img {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+.cart-line .title {
+    font-weight: 800;
+}
+
+.cart-line .price {
+    font-weight: 800;
+}
+
+.total {
+    text-align: right;
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-top: 14px;
+}
+
+label {
+    display: block;
+    font-weight: 800;
+    margin: 14px 0 6px;
+}
+
+input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(61,42,20,0.22);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    background: rgba(250,248,243,0.65);
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #f5c842, #c9912b);
+    border-radius: 12px;
+    color: #3d2a14;
+    text-decoration: none;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+}
+
+.btn.secondary {
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(61,42,20,0.18);
+}
+
+.empty {
+    text-align: center;
+    font-size: 1.15rem;
+    color: #6b5a48;
+}
+
+small {
+    color: #6b5a48;
+}
+
+.msg {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(245, 200, 66, 0.25);
+    font-weight: 800;
+    display: none;
+}
+
+.msg.error {
+    background: rgba(255, 0, 0, 0.10);
+}
+
+@media (max-width: 650px) {
+    .cart-line {
+        grid-template-columns: 70px 1fr;
+    }
+
+    .cart-line img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .cart-line .price {
+        grid-column: 2;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Zaključek nakupa</h1>
+    <p>Preverite košarico in oddajte naročilo</p>
+</header>
+
+<main class="container">
+
+    <div class="box">
+        <h2>Vaša košarica</h2>
+        <div id="cart"></div>
+        <div class="total" id="total"></div>
+    </div>
+
+    <div class="box">
+        <h2>Podatki za naročilo</h2>
+
+        <div id="msg" class="msg"></div>
+
+        <form id="orderForm">
+            <label for="name">Ime in priimek</label>
+            <input id="name" name="name" type="text" placeholder="npr. Luka Hrenovec" required>
+
+            <label for="email">Vaš e-mail</label>
+            <input id="email" name="email" type="email" placeholder="npr. luka@gmail.com" required>
+
+            <label for="phone">Telefon</label>
+            <input id="phone" name="phone" type="tel" placeholder="npr. +386 40 123 456">
+
+            <label for="address">Naslov za dostavo</label>
+            <input id="address" name="address" type="text" placeholder="Ulica 1, 1000 Ljubljana" required>
+
+            <label for="note">Opombe</label>
+            <textarea id="note" name="note" placeholder="npr. Prosim za dostavo po 16. uri."></textarea>
+
+            <p>
+                <small>
+                    Stran mora biti objavljena na spletu, na primer GitHub Pages ali Netlify.
+                    Če odpreš stran samo kot file://, pošiljanje lahko ne deluje.
+                    Pri prvi uporabi bo morda treba potrditi e-mail pri FormSubmit.
+                </small>
+            </p>
+
+            <div class="actions">
+                <a href="košarica.html" class="btn secondary">Nazaj na košarico</a>
+                <button class="btn" id="sendBtn" type="submit">Oddaj naročilo</button>
+            </div>
+        </form>
+    </div>
+
+</main>
+
+<script>
+const ORDER_TO_EMAIL = "hrenovecluka7@gmail.com";
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + ORDER_TO_EMAIL;
+
+function getCart() {
+    return JSON.parse(localStorage.getItem('cart')) || [];
+}
+
+function escapeHTML(text) {
+    return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+function showMsg(text, isError = false) {
+    const msg = document.getElementById('msg');
+    msg.style.display = "block";
+    msg.textContent = text;
+    msg.className = isError ? "msg error" : "msg";
+}
+
+function groupCartItems(cart) {
+    const grouped = [];
+
+    cart.forEach(item => {
+        const name = item.name || "Izdelek";
+        const price = Number(item.price) || 0;
+        const img = item.img || "";
+
+        const existing = grouped.find(g => g.name === name && g.price === price);
+
+        if (existing) {
+            existing.quantity += 1;
+        } else {
+            grouped.push({
+                name: name,
+                price: price,
+                img: img,
+                quantity: 1
+            });
+        }
+    });
+
+    return grouped;
+}
+
+const cart = getCart();
+const groupedCart = groupCartItems(cart);
+
+const cartDiv = document.getElementById('cart');
+const totalDiv = document.getElementById('total');
+const sendBtn = document.getElementById('sendBtn');
+
+let total = 0;
+
+if (cart.length === 0) {
+    cartDiv.innerHTML = '<p class="empty">Košarica je prazna.</p>';
+    totalDiv.textContent = '';
+    sendBtn.disabled = true;
+    sendBtn.style.opacity = '0.5';
+} else {
+    groupedCart.forEach(item => {
+        const lineTotal = item.price * item.quantity;
+        total += lineTotal;
+
+        cartDiv.innerHTML += `
+            <div class="cart-line">
+                <img src="${escapeHTML(item.img)}" alt="${escapeHTML(item.name)}">
+                <div>
+                    <div class="title">${escapeHTML(item.name)}</div>
+                    <div>Količina: ${item.quantity}</div>
+                    <div>Cena na kos: ${item.price.toFixed(2)} €</div>
+                </div>
+                <div class="price">${lineTotal.toFixed(2)} €</div>
+            </div>
+        `;
+    });
+
+    totalDiv.textContent = 'Skupaj: ' + total.toFixed(2) + ' €';
+}
+
+function buildItemsText() {
+    return groupedCart.map((item, index) => {
+        const lineTotal = item.price * item.quantity;
+
+        return `${index + 1}. ${item.name}
+Količina: ${item.quantity}
+Cena na kos: ${item.price.toFixed(2)} €
+Skupaj za izdelek: ${lineTotal.toFixed(2)} €`;
+    }).join("\n\n");
+}
+
+document.getElementById('orderForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    if (cart.length === 0) {
+        showMsg("Košarica je prazna.", true);
+        return;
+    }
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const note = document.getElementById('note').value.trim();
+
+    if (!name || !email || !address) {
+        showMsg("Izpolni ime, e-mail in naslov.", true);
+        return;
+    }
+
+    const orderText = buildItemsText();
+    const totalText = total.toFixed(2) + " €";
+
+    const formData = new FormData();
+
+    formData.append("Ime in priimek", name);
+    formData.append("Email kupca", email);
+    formData.append("Telefon", phone || "-");
+    formData.append("Naslov za dostavo", address);
+    formData.append("Opombe", note || "-");
+    formData.append("Naročeni izdelki", orderText);
+    formData.append("Skupni znesek", totalText);
+
+    formData.append("_subject", "Novo naročilo – Čebelarstvo Hrenovec");
+    formData.append("_captcha", "false");
+    formData.append("_template", "table");
+
+    sendBtn.disabled = true;
+    sendBtn.textContent = "Pošiljam...";
+
+    try {
+        const response = await fetch(FORM_ENDPOINT, {
+            method: "POST",
+            body: formData,
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+
+        if (response.ok) {
+            showMsg("Naročilo je bilo poslano! Hvala 😊");
+
+            localStorage.removeItem("cart");
+
+            sendBtn.textContent = "Oddano";
+            sendBtn.disabled = true;
+
+            setTimeout(() => {
+                window.location.href = "spletna_trgovina.html";
+            }, 2500);
+        } else {
+            throw new Error("Pošiljanje ni uspelo.");
+        }
+
+    } catch (error) {
+        showMsg("Napaka pri pošiljanju. Preveri, da je stran objavljena na spletu in da je e-mail potrjen pri FormSubmit.", true);
+        sendBtn.disabled = false;
+        sendBtn.textContent = "Oddaj naročilo";
+    }
+});
+</script>
+
+</body>
+</html>

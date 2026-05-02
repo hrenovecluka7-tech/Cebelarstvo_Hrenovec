@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Košarica | Čebelarstvo Hrenovec</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body { margin: 0; font-family: 'Lato', sans-serif; background: #faf8f3; color: #3d2a14; }
+        header { background: linear-gradient(135deg, #f5c842, #c9912b); padding: 30px 20px; text-align: center; }
+        header h1 { margin: 0; font-family: 'Playfair Display', serif; }
+        .container { max-width: 1000px; margin: 60px auto; padding: 0 24px; }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            gap: 24px;
+            align-items: center;
+            background: #fff;
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .cart-item img { width: 100%; height: 120px; border-radius: 14px; object-fit: cover; }
+        .cart-item h3 { margin: 0 0 8px; font-family: 'Playfair Display', serif; }
+        .price { font-weight: bold; font-size: 1.1rem; }
+        .total { text-align: right; font-size: 1.4rem; font-weight: bold; margin-top: 30px; }
+
+        .actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 22px; flex-wrap: wrap; }
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #f5c842, #c9912b);
+            border-radius: 12px;
+            color: #3d2a14;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+        .btn.secondary { background: rgba(255,255,255,0.55); border: 1px solid rgba(61,42,20,0.18); }
+        .empty { text-align: center; font-size: 1.2rem; color: #6b5a48; background: rgba(255,255,255,0.55); padding: 24px; border-radius: 16px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Košarica</h1>
+    <p>Pregled naročenih izdelkov</p>
+</header>
+
+<main class="container">
+    <div id="cart"></div>
+    <div class="total" id="total"></div>
+
+    <div class="actions">
+    <a href="trgovina.html" class="btn secondary">Nadaljuj nakup</a>
+    <a href="konec_nakupa.html" class="btn">Zaključi nakup</a>
+</div>
+</main>
+
+<script>
+function getCart(){ return JSON.parse(localStorage.getItem('cart')) || []; }
+function saveCart(cart){ localStorage.setItem('cart', JSON.stringify(cart)); }
+
+let cart = getCart();
+const cartDiv = document.getElementById('cart');
+const totalDiv = document.getElementById('total');
+
+// funkcija za izris košarice
+function renderCart(){
+    cartDiv.innerHTML = '';
+    let total = 0;
+
+    if(cart.length === 0){
+        cartDiv.innerHTML = '<p class="empty">Košarica je prazna.</p>';
+        totalDiv.textContent = '';
+        return;
+    }
+
+    cart.forEach((item, index)=>{
+        const price = Number(item.price || 0);
+        total += price;
+
+        cartDiv.innerHTML += `
+            <div class="cart-item">
+                <img src="${item.img || ''}" alt="${item.name || 'Izdelek'}">
+                <div>
+                    <h3>${item.name || 'Izdelek'}</h3>
+                    <p class="price">${price.toFixed(2)} €</p>
+                </div>
+                <div>
+                    <div class="price">${price.toFixed(2)} €</div>
+                    <button class="btn secondary" onclick="removeItem(${index})">Odstrani</button>
+                </div>
+            </div>
+        `;
+    });
+
+    totalDiv.textContent = 'Skupaj: ' + total.toFixed(2) + ' €';
+}
+
+// odstrani izdelek
+function removeItem(index){
+    cart.splice(index, 1);
+    saveCart(cart);
+    renderCart();
+}
+
+// inicialni izris
+renderCart();
+</script>
+
+</body>
+</html>

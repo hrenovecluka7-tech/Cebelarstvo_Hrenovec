@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Galerija | Čebelarstvo Hrenovec</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Lato',sans-serif;
+background:#faf8f3;
+color:#3d2a14;
+}
+
+header{
+background:linear-gradient(135deg,#f5c842,#c9912b);
+padding:30px;
+text-align:center;
+}
+
+header h1{
+margin:0;
+font-family:'Playfair Display',serif;
+}
+
+.container{
+max-width:1200px;
+margin:60px auto;
+padding:0 24px;
+}
+
+h2{
+font-family:'Playfair Display',serif;
+margin-bottom:20px;
+text-align:center;
+}
+
+/* GALERIJA */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:16px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+transition:all 0.3s ease;
+cursor:pointer;
+}
+
+.gallery img:hover{
+transform:scale(1.07);
+}
+
+/* LIGHTBOX */
+#lightbox{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:16px;
+}
+
+#lightbox span{
+position:absolute;
+top:20px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+
+/* VIDEO LINK */
+.video-box{
+margin-top:60px;
+text-align:center;
+}
+
+.video-link{
+display:inline-block;
+margin-top:20px;
+padding:16px 36px;
+background:linear-gradient(135deg,#f5c842,#c9912b);
+border-radius:14px;
+color:#3d2a14;
+text-decoration:none;
+font-weight:700;
+font-size:18px;
+transition:0.3s;
+}
+
+.video-link:hover{
+transform:scale(1.08);
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* GUMB */
+.btn{
+display:inline-block;
+margin-top:40px;
+padding:14px 32px;
+background:linear-gradient(135deg,#f5c842,#c9912b);
+border-radius:12px;
+color:#3d2a14;
+text-decoration:none;
+font-weight:700;
+}
+
+footer{
+margin-top:80px;
+padding:20px;
+text-align:center;
+background:#f5c842;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Galerija</h1>
+<p>Utrinki iz našega čebelarstva</p>
+</header>
+
+<main class="container">
+
+<h2>📸 Galerija slik</h2>
+
+<div class="gallery">
+
+<img src="slike/IMG_2217.jpg">
+<img src="slike/IMG_2219.jpg">
+<img src="slike/IMG_2220.jpg">
+<img src="slike/IMG_2026.jpg">
+<img src="slike/IMG_2021.jpg">
+<img src="slike/IMG_2221.jpg">
+<img src="slike/IMG_2037.jpg">
+<img src="slike/IMG_2026.jpg">
+<img src="slike/IMG_2038.jpg">
+<img src="slike/IMG_2040.jpg">
+
+
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <span onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img">
+</div>
+
+<div class="video-box">
+
+<h2>🎥 Predstavitveni video</h2>
+
+<a href="https://www.youtube.com/watch?v=u0czLxOrJe8" target="_blank" class="video-link">
+▶ Klikni za ogled videa
+</a>
+
+</div>
+
+<div style="text-align:center">
+<a href="Čebelarstvo Hrenovec.html" class="btn">Nazaj domov</a>
+</div>
+
+</main>
+
+<footer>
+<p>© 2025 Čebelarstvo Hrenovec</p>
+</footer>
+
+<script>
+const images = document.querySelectorAll('.gallery img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+images.forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+  });
+});
+
+function closeLightbox(){
+  lightbox.style.display = 'none';
+}
+</script>
+
+</body>
+</html>
